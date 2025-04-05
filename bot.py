@@ -1,6 +1,8 @@
 import discord
 import os
 import random
+import asyncio
+
 
 TOKEN = os.getenv('TOKEN')  
 GUILD_ID = int(os.getenv('GUILD_ID'))
@@ -9,7 +11,16 @@ USER_ID  = int(os.getenv('USER_ID'))
 intents = discord.Intents.default()
 intents.members = True
 client = discord.Client(intents=intents)
-list_of_nicknames = ["Pedro", "Juan", "Carlos", "Luis", "Miguel", "Javier", "Andres", "Fernando", "Diego", "Pablo"]
+
+list_of_nicknames = [
+    "Porky",
+    "Fatty",
+    "Fatso",
+    "Fries Eater",
+    "Nigga",
+    "Nigger",
+    "Chubby"
+    ]
 
 async def update_nickname():
     await client.wait_until_ready()
@@ -28,6 +39,7 @@ async def update_nickname():
         else:
             print("User not found in guild.")
 
+        await asyncio.sleep(180)
 
 @client.event
 async def on_ready():
